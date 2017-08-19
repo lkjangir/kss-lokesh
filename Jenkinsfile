@@ -1,17 +1,18 @@
 pipeline {
-    agent { docker "maven:3-jdk-8" }
-    stages {
-        stage("build") {
-            steps {
-                sh 'mvn package'
-                sh 'ls -R *'
-            }
-        }
+  agent any
+  stages {
+    stage('Greetings') {
+      steps {
+        input(message: 'Start Job', ok: 'yes')
+      }
     }
-    post {
-        always {
-            archive "target/**/*.jar"
-            junit 'target/surefire-reports/*.xml'
-        }
+  }
+  post {
+    always {
+      archive 'target/**/*.jar'
+      junit 'target/surefire-reports/*.xml'
+      
     }
+    
+  }
 }
