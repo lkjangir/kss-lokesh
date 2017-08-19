@@ -6,6 +6,11 @@ pipeline {
         input(message: 'Start Job', ok: 'yes')
       }
     }
+    stage('') {
+      steps {
+        sh 'mvn package'
+      }
+    }
   }
   post {
     always {
