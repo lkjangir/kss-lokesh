@@ -16,6 +16,11 @@ pipeline {
         sh 'mvn package'
       }
     }
+    stage('archive') {
+      steps {
+        archiveArtifacts(allowEmptyArchive: true, artifacts: 'target/**/*.jar')
+      }
+    }
   }
   post {
     always {
