@@ -13,15 +13,33 @@ pipeline {
     }
     stage('test-package') {
       steps {
-        sh 'mvn package'
+        parallel(
+          "test-package": {
+            sh 'mvn package'
+            
+          },
+          "list": {
+            sh 'ls'
+            
+          }
+        )
       }
     }
     stage('archive') {
       steps {
-        archiveArtifacts(allowEmptyArchive: true, artifacts: 'target/**/*.jar')
+        parallel(
+          "archive": {
+            archiveArtifacts(allowEmptyArchive: true, artifacts: 'target/**/*.jar')
+            
+          },
+          "list": {
+            sh 'ls'
+            
+          }
+        )
       }
     }
-    stage('build-image'){
+    stage('build-image') {
       steps {
         sh 'docker build . -t maven-kss:1'
       }
