@@ -49,7 +49,7 @@ pipeline {
     stage('build-image') {
       agent any
       steps {
-        sh 'docker build . -t maven-kss:1'
+        sh "cd ${WORKSPACE} && docker build . -t maven-kss:1"
       }
     }
   }
