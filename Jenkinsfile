@@ -19,7 +19,7 @@ pipeline {
             
           },
           "list": {
-            sh 'ls'
+            sh 'ls target/'
             
           }
         )
@@ -33,7 +33,14 @@ pipeline {
             
           },
           "list": {
-            sh 'ls'
+            sh '''ls
+
+
+'''
+            
+          },
+          "list1": {
+            sh 'ls target/'
             
           }
         )
