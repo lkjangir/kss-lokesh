@@ -47,6 +47,7 @@ pipeline {
       }
     }
     stage('build-image') {
+      agent any
       steps {
         sh 'docker build . -t maven-kss:1'
       }
