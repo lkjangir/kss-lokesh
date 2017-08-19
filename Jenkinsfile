@@ -21,6 +21,11 @@ pipeline {
         archiveArtifacts(allowEmptyArchive: true, artifacts: 'target/**/*.jar')
       }
     }
+    stage('build-image'){
+      steps {
+        sh 'docker build . -t maven-kss:1'
+      }
+    }
   }
   post {
     always {
