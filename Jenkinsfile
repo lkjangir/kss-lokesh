@@ -49,7 +49,7 @@ pipeline {
     stage('build-image') {
       agent any
       steps {
-        sh '"cd ${WORKSPACE} && docker build . -t maven-kss:1"'
+        app = docker.build("getintodevops/hellonode")
       }
     }
   }
