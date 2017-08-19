@@ -11,9 +11,9 @@ pipeline {
         input(message: 'Start Job', ok: 'yes')
       }
     }
-    stage('test') {
+    stage('test-package') {
       steps {
-        sh 'mvn test'
+        sh 'mvn package'
       }
     }
   }
