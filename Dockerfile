@@ -14,5 +14,5 @@ RUN apt-get update && apt-get -y install \
 #Install openjdk-8-jre
 RUN apt-get update
 RUN apt-get install -y openjdk-8-jre
-COPY target/kss-lokesh-1.0-SNAPSHOT.jar /root/kss-lokesh.jar
+COPY target/KSS-Jenkins-1.0-SNAPSHOT.jar /root/kss-lokesh.jar
 CMD ["java","-jar","root/kss-lokesh.jar"]
